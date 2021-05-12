@@ -1,8 +1,9 @@
 for (i = 0; i < localStorage.length; i++) {
-    //permet d'avoir la clé                   //permet d'avoir la valeur
+    //permet d'avoir la clé                   
     let keyName = localStorage.key(i)
+    //permet d'avoir la valeur
     let keyValue = localStorage.getItem(localStorage.key(i))
-   
+
     presList.innerHTML += `<li id="${keyName}">${keyName} -- ${keyValue}<button data-keyname="${keyName}" data-button="delete">delete</button></li>`
 
 }
@@ -18,16 +19,19 @@ addBtn.onclick = function () {
 
     //parcourir
     localStorage.getItem(presTitle, presAddress);
-
-
     presList.innerHTML += `<li id="${presTitle}">${presTitle} -- ${presAddress}<button data-keyname="${presTitle}" data-button="delete">delete</button></li>`
 
 }
 
+
+
 //supprimer
-const delBtns = document.querySelectorAll(['button[data-button="delete"]']);
-delBtns.forEach(element =>
+let keyDelete = localStorage.removeItem(localStorage.key(i))
+
+let deleteBtn = document.querySelectorAll(['button[data-button="delete"]']);
+
+deleteBtn.forEach(element =>
     element.addEventListener('click', function () {
-        console.log(this.dataset.data - li)
+        presList.removeChild(document.querySelector('#'+this.dataset.keyname))
     })
 )

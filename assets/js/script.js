@@ -26,12 +26,14 @@ addBtn.onclick = function () {
 
 
 //supprimer
-let keyDelete = localStorage.removeItem(localStorage.key(i))
+
 
 let deleteBtn = document.querySelectorAll(['button[data-button="delete"]']);
 
 deleteBtn.forEach(element =>
     element.addEventListener('click', function () {
-        presList.removeChild(document.querySelector('#'+this.dataset.keyname))
+        presList.removeChild(document.querySelector('#'+this.dataset.keyname));
+        localStorage.removeItem(this.dataset.keyname)
+
     })
 )
